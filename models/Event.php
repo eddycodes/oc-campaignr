@@ -62,6 +62,26 @@ class Event extends Model
     public $rules = [];
 
     /**
+     * @var array Fillable fields for mass assignment
+     */
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'time_begin',
+        'time_end',
+        'repeat_event',
+        'repeat_mode',
+        'end_repeat_on',
+        'location_street',
+        'location_number',
+        'location_zip',
+        'location_city',
+        'location_country',
+        'location_misc'
+    ];
+
+    /**
      * Holds the next occurrence of this event, if the function getNextOccurrence
      * has been called and has returned true.
      * @var string

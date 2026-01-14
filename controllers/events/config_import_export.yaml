@@ -1,0 +1,16 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    title: Import Events
+    modelClass: ImpulseTechnologies\Campaignr\Models\EventImport
+    list: $/impulsetechnologies/campaignr/models/eventimport/columns.yaml
+    redirect: impulsetechnologies/campaignr/events
+
+export:
+    title: Export Events
+    modelClass: ImpulseTechnologies\Campaignr\Models\EventExport
+    list: $/impulsetechnologies/campaignr/models/eventexport/columns.yaml
+    fileName: events.csv
+    redirect: impulsetechnologies/campaignr/events

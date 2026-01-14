@@ -1,82 +1,222 @@
 {% set event = __SELF__.event %}
 
-<h1>{{ event.name }}</h1>
-<p class="campaignr-event-date">
-  {% if event.repeat_event and event.repeat_mode > 0 %}
-    {{ 'Every'|_ }}
-    {% if event.repeat_mode == 1 %}
-    {{ 'day'|_ }},
-    {{ event.time_begin|date('G:i') }}
-    -{{ event.time_end|date('G:i') }}
+{% if event %}
+<div class="event-component">
+
+    <!-- Event Header -->
+    <header class="event-header">
+        <h1 class="event-title">{{ event.name }}</h1>
+
+        <!-- Event Status Badge -->
+        {% if isHappening %}
+        <span class="event-status-badge happening">
+            <i class="fas fa-circle-dot"></i> Happening Now
+        </span>
+        {% elseif isPast %}
+        <span class="event-status-badge past">
+            <i class="fas fa-check-circle"></i> Past Event
+        </span>
+        {% else %}
+        <span class="event-status-badge upcoming">
+            <i class="fas fa-calendar-star"></i> Upcoming
+        </span>
+        {% endif %}
+    </header>
+
+    <!-- Event Meta Information -->
+    <div class="event-meta">
+        <!-- Date & Time -->
+        <div class="event-meta-item">
+            <div class="event-meta-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="event-meta-content">
+                <span class="event-meta-label">Date & Time</span>
+                <div class="event-meta-value">
+                    {% if event.repeat_event and event.repeat_mode > 0 %}
+                        {# Recurring Event #}
+                        {% if event.repeat_mode == 1 %}
+                            Every day, {{ event.time_begin|date('g:i A') }} - {{ event.time_end|date('g:i A') }}
+                        {% elseif event.repeat_mode == 2 %}
+                            Every {{ event.time_begin|date('l') }}, {{ event.time_begin|date('g:i A') }} - {{ event.time_end|date('g:i A') }}
+                        {% elseif event.repeat_mode == 3 %}
+                            Every month on {{ event.time_begin|date('l') }}, {{ event.time_begin|date('g:i A') }} - {{ event.time_end|date('g:i A') }}
+                        {% elseif event.repeat_mode == 4 %}
+                            Every year on {{ event.time_begin|date('F j') }}, {{ event.time_begin|date('g:i A') }} - {{ event.time_end|date('g:i A') }}
+                        {% endif %}
+                        {% if event.end_repeat_on %}
+                        <br><small style="color: #6c757d;">Until {{ event.end_repeat_on|date('F j, Y') }}</small>
+                        {% endif %}
+                    {% else %}
+                        {# Single Event #}
+                        {% if event.time_begin|date('Y-m-d') == event.time_end|date('Y-m-d') %}
+                            {# Same Day #}
+                            {{ event.time_begin|date('F j, Y') }}<br>
+                            {{ event.time_begin|date('g:i A') }} - {{ event.time_end|date('g:i A') }}
+                        {% else %}
+                            {# Multi-day Event #}
+                            {{ event.time_begin|date('F j, Y g:i A') }} -<br>
+                            {{ event.time_end|date('F j, Y g:i A') }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Location -->
+        {% if event.location_street or event.location_city %}
+        <div class="event-meta-item">
+            <div class="event-meta-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="event-meta-content">
+                <span class="event-meta-label">Location</span>
+                <div class="event-meta-value">
+                    {% if event.location_street %}
+                        {{ event.location_street }} {{ event.location_number }}<br>
+                    {% endif %}
+                    {% if event.location_zip or event.location_city %}
+                        {{ event.location_zip }} {{ event.location_city }}<br>
+                    {% endif %}
+                    {% if event.location_country %}
+                        {{ event.location_country }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Recurring Event Info Box -->
+    {% if event.repeat_event and nextOccurrence %}
+    <div class="event-recurring-info">
+        <h3><i class="fas fa-sync-alt"></i> Recurring Event</h3>
+        <p>Next occurrence: <strong>{{ nextOccurrence|date('F j, Y \a\t g:i A') }}</strong></p>
+    </div>
     {% endif %}
-    {% if event.repeat_mode == 2 %}
-    {{ event.time_begin|date('l')|_ }},
-    {{ event.time_begin|date('G:i') }}
-    - {{ event.time_end|date('G:i') }}
+
+    <!-- Event Description -->
+    {% if event.description %}
+    <section class="event-description">
+        <h2>About This Event</h2>
+        {{ event.description|md }}
+    </section>
     {% endif %}
-    {% if event.repeat_mode == 3 %}
-    {{ 'month'|_ }}
-    {{ event.time_begin|date('l') }},
-    {{ event.time_begin|date('G:i') }}
-    - {{ event.time_end|date('G:i') }}
+
+    <!-- Location Details with Map -->
+    {% if event.location_street or event.location_city %}
+    <section class="event-location">
+        <h2><i class="fas fa-map-marked-alt"></i> Location Details</h2>
+
+        <div class="event-location-address">
+            {% if event.location_street %}
+                <strong>{{ event.location_street }} {{ event.location_number }}</strong><br>
+            {% endif %}
+            {% if event.location_zip or event.location_city %}
+                {{ event.location_zip }} {{ event.location_city }}<br>
+            {% endif %}
+            {% if event.location_country %}
+                {{ event.location_country }}
+            {% endif %}
+        </div>
+
+        {% if event.location_misc %}
+        <div class="event-location-misc">
+            <i class="fas fa-info-circle"></i> {{ event.location_misc }}
+        </div>
+        {% endif %}
+
+        <!-- Google Maps Integration -->
+        {% if __SELF__.property('showMap') %}
+        <div class="event-location-map" data-map-url="{{ __SELF__.getMapUrl() }}">
+            <!-- Option 1: Use an iframe embed (requires Google Maps API key) -->
+            <!-- <iframe src="{{ __SELF__.getMapEmbedUrl() }}" allowfullscreen loading="lazy"></iframe> -->
+
+            <!-- Option 2: Simple link to open in Google Maps -->
+            <a href="{{ __SELF__.getMapUrl() }}" target="_blank"
+               style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f8f9fa; text-decoration: none; color: #007bff; font-weight: 500;">
+                <i class="fas fa-map-marked-alt" style="margin-right: 0.5rem; font-size: 1.5rem;"></i>
+                View on Google Maps
+            </a>
+        </div>
+        {% endif %}
+    </section>
     {% endif %}
-    {% if event.repeat_mode == 4 %}
-    {{ 'year'|_ }}
-    {{ event.time_begin|date('F j, G:i') }}
-    - {{ event.time_end|date('F j, G:i') }}
-    {% endif %}
-  {% else %}
-  {# The event does not repeat -> Display the date itself #}
-    {% if event.time_begin|date('Y') == event.time_end|date('Y') %}
-      {% if event.time_begin|date('F') == event.time_end|date('F') %}
-       {% if event.time_begin|date('j') == event.time_end|date('j') %}
-       {# This event is on one single day #}
-       {{ event.time_begin|date('F j Y, G:i') }}
-       - {{ event.time_end|date('G:i') }}
-       {% else %}
-       {# This event spans multiple days #}
-       {{ event.time_begin|date('F j Y, G:i') }}
-       - {{ event.time_end|date('j, G:i') }}
-       {% endif %}
-      {% else %}
-      {# This event spans two months #}
-      {{ event.time_begin|date('F j Y, G:i') }}
-      - {{ event.time_end|date('F j, G:i') }}
-      {% endif %}
-    {% else %}
-    {# This event spans multiple years #}
-    {{ event.time_begin|date('F j Y, G:i') }}
-    - {{ event.time_end|date('F j Y, G:i') }}
-    {% endif %}
+
+    <!-- Event Actions -->
+    <div class="event-actions">
+        <!-- Add to Calendar Button -->
+        {% if __SELF__.property('icalPage') %}
+        <a href="{{ __SELF__.property('icalPage')|page({ (__SELF__.paramName('icalPageSlug')): event.slug }) }}"
+           class="event-btn event-btn-primary" download>
+            <i class="fas fa-calendar-plus"></i>
+            Add to Calendar
+        </a>
+        {% endif %}
+
+        <!-- Share Button (you can add social media sharing) -->
+        <button class="event-btn event-btn-secondary" onclick="if(navigator.share){navigator.share({title:'{{ event.name|e('js') }}',text:'{{ event.description|striptags|e('js') }}',url:window.location.href})}else{alert('Share: '+window.location.href)}">
+            <i class="fas fa-share-alt"></i>
+            Share Event
+        </button>
+
+        <!-- Get Directions -->
+        {% if event.location_street or event.location_city %}
+        <a href="{{ __SELF__.getMapUrl() }}" target="_blank" class="event-btn event-btn-outline">
+            <i class="fas fa-directions"></i>
+            Get Directions
+        </a>
+        {% endif %}
+
+        <!-- Back to Calendar -->
+        {% if __SELF__.property('calendarPage') %}
+        <a href="{{ __SELF__.property('calendarPage')|page }}" class="event-btn event-btn-outline">
+            <i class="fas fa-arrow-left"></i>
+            Back to Calendar
+        </a>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- Schema.org structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "{{ event.name|e('js') }}",
+  "description": "{{ event.description|striptags|e('js') }}",
+  "startDate": "{{ event.time_begin|date('c') }}",
+  "endDate": "{{ event.time_end|date('c') }}",
+  {% if event.location_street or event.location_city %}
+  "location": {
+    "@type": "Place",
+    "name": "{{ event.location_misc|default('Event Location')|e('js') }}",
+    "address": {
+      "@type": "PostalAddress",
+      {% if event.location_street %}"streetAddress": "{{ event.location_street }} {{ event.location_number }}",{% endif %}
+      {% if event.location_city %}"addressLocality": "{{ event.location_city }}",{% endif %}
+      {% if event.location_zip %}"postalCode": "{{ event.location_zip }}",{% endif %}
+      {% if event.location_country %}"addressCountry": "{{ event.location_country }}"{% endif %}
+    }
+  },
   {% endif %}
-  {% if event.end_repeat_on %}
-  ({{ 'until'|_ }} {{ event.end_repeat_on|date('F j, Y')}})
-  {% endif %}
-</p>
-<p>{{ event.description|md }}</p>
-<h2>{{ 'Address'|_ }}</h2>
-<p>
-  {{ event.location_street }} {{ event.location_number }}<br>
-  {{ event.location_zip }} {{ event.location_city }}<br>
-  {{ event.location_country }}
-</p>
-{% if event.location_misc %}
-<p>{{ event.location_misc }}</p>
-{% endif %}
-<p>
-</p>
-{% if __SELF__.property('icalPage') %}
-<p>
-  <a class="btn btn-primary" href="{{ __SELF__.property('icalPage')|page({ (__SELF__.paramName('icalPageSlug')): event.slug }) }}">
-    {{ 'Add this event to your calendar'|_ }}
-  </a>
-</p>
-{% endif %}
-{% if __SELF__.property('calendarPage') %}
-<hr>
-<p>
-  <a class="btn btn-primary" href="{{ __SELF__.property('calendarPage')|page }}">
-    {{ 'Back to the calendar'|_ }}
-  </a>
-</p>
+  "eventStatus": "https://schema.org/Event{% if isPast %}Postponed{% elseif isHappening %}Scheduled{% else %}Scheduled{% endif %}",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+}
+</script>
+
+{% else %}
+<!-- Event Not Found -->
+<div class="event-component">
+    <div class="alert alert-warning" role="alert" style="padding: 2rem; background-color: #fff3cd; border: 1px solid #ffc107; border-radius: 0.5rem; color: #856404;">
+        <h2 style="margin-top: 0;"><i class="fas fa-exclamation-triangle"></i> Event Not Found</h2>
+        <p style="margin-bottom: 1rem;">The event you're looking for could not be found or may have been removed.</p>
+        {% if __SELF__.property('calendarPage') %}
+        <a href="{{ __SELF__.property('calendarPage')|page }}" class="event-btn event-btn-primary">
+            <i class="fas fa-calendar"></i> View All Events
+        </a>
+        {% endif %}
+    </div>
+</div>
 {% endif %}

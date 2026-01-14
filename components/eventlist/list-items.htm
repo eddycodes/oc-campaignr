@@ -1,0 +1,120 @@
+{% if events.count > 0 %}
+    {% for event in events %}
+        <div class="event-card">
+            <!-- Event Header with Gradient -->
+            <div class="event-card-header">
+                <h3>{{ event.name }}</h3>
+                <div class="event-date-badge">
+                    <div class="day">{{ event.time_begin|date('d') }}</div>
+                    <div class="month">{{ event.time_begin|date('M') }}</div>
+                </div>
+            </div>
+
+            <!-- Event Body -->
+            <div class="event-card-body">
+                <!-- Event Meta Information -->
+                <div class="event-meta">
+                    <div class="event-meta-item">
+                        <i class="far fa-calendar"></i>
+                        <span>{{ event.time_begin|date('l, F j, Y') }}</span>
+                    </div>
+                    <div class="event-meta-item">
+                        <i class="far fa-clock"></i>
+                        <span>{{ event.time_begin|date('g:i A') }} - {{ event.time_end|date('g:i A') }}</span>
+                    </div>
+                    {% if event.repeat_event %}
+                    <div class="event-meta-item">
+                        <i class="fas fa-redo"></i>
+                        <span>
+                            {% if event.repeat_mode == 1 %}Daily
+                            {% elseif event.repeat_mode == 2 %}Weekly
+                            {% elseif event.repeat_mode == 3 %}Monthly
+                            {% elseif event.repeat_mode == 4 %}Yearly
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Event Description -->
+                {% if event.description %}
+                <div class="event-description">
+                    {% set description = event.description|striptags %}
+                    {% if description|length > 200 %}
+                        {{ description|slice(0, 200) }}...
+                    {% else %}
+                        {{ description }}
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Event Location -->
+                {% if event.location_street or event.location_city %}
+                <div class="event-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <strong>Venue:</strong>
+                    {% if event.location_street %}
+                        {{ event.location_street }}
+                        {% if event.location_number %}{{ event.location_number }}{% endif %},
+                    {% endif %}
+                    {% if event.location_city %}
+                        {{ event.location_city }}
+                    {% endif %}
+                    {% if event.location_zip %}
+                        {{ event.location_zip }}
+                    {% endif %}
+                    {% if event.location_country %}
+                        , {{ event.location_country }}
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Event Tags/Additional Info -->
+                {% if event.location_misc %}
+                <div class="event-tags">
+                    <span class="event-tag">
+                        <i class="fas fa-info-circle me-1"></i>
+                        {{ event.location_misc }}
+                    </span>
+                </div>
+                {% endif %}
+
+                <!-- Action Buttons -->
+                <div class="event-actions">
+                    {% if eventPage %}
+                    <a href="{{ eventPage|page({ slug: event.slug }) }}" class="btn btn-event-primary">
+                        <i class="fas fa-ticket-alt me-2"></i>View Details
+                    </a>
+                    {% endif %}
+                    <button type="button" class="btn btn-event-outline" onclick="shareEvent('{{ event.name }}', '{{ eventPage|page({ slug: event.slug }) }}')">
+                        <i class="fas fa-share-alt me-2"></i>Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="no-events">
+        <i class="far fa-calendar-times"></i>
+        <h3>No Events Found</h3>
+        <p>There are no events matching your criteria at the moment.</p>
+        <p class="text-muted">Check back later or adjust your search filters.</p>
+    </div>
+{% endif %}
+
+<script>
+function shareEvent(title, url) {
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            url: url
+        }).catch(err => console.log('Error sharing:', err));
+    } else {
+        // Fallback - copy to clipboard
+        const fullUrl = window.location.origin + url;
+        navigator.clipboard.writeText(fullUrl).then(() => {
+            alert('Event link copied to clipboard!');
+        });
+    }
+}
+</script>

@@ -1,0 +1,396 @@
+/**
+ * Event Component Styles
+ * Modern, responsive CSS for displaying single event details
+ */
+
+/* CSS Variables */
+:root {
+    --event-component-primary: #007bff;
+    --event-component-primary-hover: #0056b3;
+    --event-component-success: #28a745;
+    --event-component-secondary: #6c757d;
+    --event-component-text-primary: #212529;
+    --event-component-text-secondary: #495057;
+    --event-component-text-muted: #6c757d;
+    --event-component-bg-light: #f8f9fa;
+    --event-component-bg-info: #e7f3ff;
+    --event-component-border: #e9ecef;
+    --event-component-border-light: #dee2e6;
+    --event-component-white: #ffffff;
+    --event-component-info-text: #004085;
+}
+
+/* Event Container */
+.event-component {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Event Header */
+.event-header {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--event-component-border);
+}
+
+.event-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--event-component-text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.event-status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.event-status-badge.happening {
+    background-color: var(--event-component-success);
+    color: var(--event-component-white);
+}
+
+.event-status-badge.upcoming {
+    background-color: var(--event-component-primary);
+    color: var(--event-component-white);
+}
+
+.event-status-badge.past {
+    background-color: var(--event-component-secondary);
+    color: var(--event-component-white);
+}
+
+/* Event Meta Information */
+.event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.event-meta-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.event-meta-icon {
+    font-size: 1.5rem;
+    color: var(--event-component-primary);
+    flex-shrink: 0;
+}
+
+.event-meta-content {
+    flex: 1;
+}
+
+.event-meta-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--event-component-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.event-meta-value {
+    font-size: 1rem;
+    color: var(--event-component-text-primary);
+    font-weight: 500;
+}
+
+/* Event Description */
+.event-description {
+    margin-bottom: 3rem;
+}
+
+.event-description h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--event-component-text-primary);
+    margin-bottom: 1rem;
+}
+
+.event-description p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--event-component-text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* Event Location */
+.event-location {
+    background-color: var(--event-component-bg-light);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.event-location h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--event-component-text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.event-location-address {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--event-component-text-secondary);
+    margin-bottom: 1rem;
+}
+
+.event-location-misc {
+    font-size: 0.875rem;
+    color: var(--event-component-text-muted);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--event-component-border-light);
+}
+
+.event-location-map {
+    margin-top: 1.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: 300px;
+    border: 1px solid var(--event-component-border-light);
+}
+
+.event-location-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Event Actions */
+.event-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--event-component-border);
+}
+
+.event-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.event-btn-primary {
+    background-color: var(--event-component-primary);
+    color: var(--event-component-white);
+}
+
+.event-btn-primary:hover {
+    background-color: var(--event-component-primary-hover);
+    color: var(--event-component-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.event-btn-secondary {
+    background-color: var(--event-component-white);
+    color: var(--event-component-primary);
+    border: 2px solid var(--event-component-primary);
+}
+
+.event-btn-secondary:hover {
+    background-color: var(--event-component-primary);
+    color: var(--event-component-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.event-btn-outline {
+    background-color: transparent;
+    color: var(--event-component-text-muted);
+    border: 2px solid var(--event-component-border-light);
+}
+
+.event-btn-outline:hover {
+    background-color: var(--event-component-bg-light);
+    color: var(--event-component-text-secondary);
+    border-color: var(--event-component-text-muted);
+}
+
+.event-btn i {
+    font-size: 1.125rem;
+}
+
+/* Recurring Event Info */
+.event-recurring-info {
+    background-color: var(--event-component-bg-info);
+    border-left: 4px solid var(--event-component-primary);
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.event-recurring-info h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--event-component-info-text);
+    margin-bottom: 0.5rem;
+}
+
+.event-recurring-info p {
+    font-size: 1rem;
+    color: var(--event-component-info-text);
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-component {
+        padding: 1rem 0.5rem;
+    }
+
+    .event-title {
+        font-size: 2rem;
+    }
+
+    .event-meta {
+        gap: 1rem;
+    }
+
+    .event-meta-item {
+        flex-basis: 100%;
+    }
+
+    .event-actions {
+        flex-direction: column;
+    }
+
+    .event-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .event-location {
+        padding: 1.5rem;
+    }
+
+    .event-location-map {
+        height: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .event-title {
+        font-size: 1.75rem;
+    }
+
+    .event-description p {
+        font-size: 1rem;
+    }
+
+    .event-location-map {
+        height: 200px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .event-actions {
+        display: none;
+    }
+
+    .event-location-map {
+        border: 1px solid #ddd;
+        background-color: #f5f5f5;
+    }
+
+    .event-location-map::after {
+        content: "Map available at: " attr(data-map-url);
+        display: block;
+        padding: 1rem;
+        text-align: center;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .event-component {
+        color: #e9ecef;
+    }
+
+    .event-title,
+    .event-description h2,
+    .event-location h2,
+    .event-meta-value {
+        color: #f8f9fa;
+    }
+
+    .event-description p,
+    .event-location-address {
+        color: #dee2e6;
+    }
+
+    .event-meta-label,
+    .event-location-misc {
+        color: #adb5bd;
+    }
+
+    .event-location {
+        background-color: #343a40;
+    }
+
+    .event-header {
+        border-bottom-color: #495057;
+    }
+
+    .event-actions {
+        border-top-color: #495057;
+    }
+
+    .event-btn-outline {
+        color: #adb5bd;
+        border-color: #495057;
+    }
+
+    .event-btn-outline:hover {
+        background-color: #495057;
+        color: #f8f9fa;
+        border-color: #6c757d;
+    }
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.event-component > * {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.event-component > *:nth-child(1) { animation-delay: 0.1s; }
+.event-component > *:nth-child(2) { animation-delay: 0.2s; }
+.event-component > *:nth-child(3) { animation-delay: 0.3s; }
+.event-component > *:nth-child(4) { animation-delay: 0.4s; }

@@ -1,0 +1,183 @@
+# ===================================
+# Settings Field Configuration
+# ===================================
+
+tabs:
+    fields:
+        # Event List Component Colors
+        _event_list_section:
+            label: Event List Component Colors
+            type: section
+            comment: Customize colors for the Event List component (campaignrEventList)
+
+        event_primary_color:
+            label: Primary Color
+            type: colorpicker
+            tab: Event List Colors
+            comment: Main brand color used in gradients and accents
+            default: '#003866'
+
+        event_secondary_color:
+            label: Secondary Color
+            type: colorpicker
+            tab: Event List Colors
+            comment: Secondary brand color for gradients
+            default: '#0065b8'
+
+        event_white:
+            label: White/Light Color
+            type: colorpicker
+            tab: Event List Colors
+            comment: White or light color for text and backgrounds
+            default: '#ffffff'
+
+        event_text_primary:
+            label: Primary Text Color
+            type: colorpicker
+            tab: Event List Colors
+            comment: Main text color for headings and important content
+            default: '#2d3748'
+
+        event_text_secondary:
+            label: Secondary Text Color
+            type: colorpicker
+            tab: Event List Colors
+            comment: Secondary text color for body content
+            default: '#495057'
+
+        event_text_muted:
+            label: Muted Text Color
+            type: colorpicker
+            tab: Event List Colors
+            comment: Muted text color for less important information
+            default: '#6c757d'
+
+        event_bg_light:
+            label: Light Background Color
+            type: colorpicker
+            tab: Event List Colors
+            comment: Light background color for sections
+            default: '#f8f9fa'
+
+        event_border_color:
+            label: Border Color
+            type: colorpicker
+            tab: Event List Colors
+            comment: Border and separator color
+            default: '#e9ecef'
+
+        # Event Component Colors
+        _event_component_section:
+            label: Event Component Colors
+            type: section
+            comment: Customize colors for the Event Detail component (campaignrEvent)
+
+        event_component_primary:
+            label: Primary Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Primary color for buttons and highlights
+            default: '#007bff'
+
+        event_component_primary_hover:
+            label: Primary Hover Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Primary color when hovering over interactive elements
+            default: '#0056b3'
+
+        event_component_success:
+            label: Success Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Color for success states (e.g., happening now badge)
+            default: '#28a745'
+
+        event_component_secondary:
+            label: Secondary Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Secondary color for less prominent elements
+            default: '#6c757d'
+
+        event_component_text_primary:
+            label: Primary Text Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Main text color for headings
+            default: '#212529'
+
+        event_component_text_secondary:
+            label: Secondary Text Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Color for body text and descriptions
+            default: '#495057'
+
+        event_component_text_muted:
+            label: Muted Text Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Color for secondary information
+            default: '#6c757d'
+
+        event_component_bg_light:
+            label: Light Background Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Light background for sections
+            default: '#f8f9fa'
+
+        event_component_bg_info:
+            label: Info Background Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Background color for informational sections
+            default: '#e7f3ff'
+
+        event_component_border:
+            label: Border Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Main border color
+            default: '#e9ecef'
+
+        event_component_border_light:
+            label: Light Border Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Light border color for subtle separators
+            default: '#dee2e6'
+
+        event_component_white:
+            label: White Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: White color for backgrounds and text
+            default: '#ffffff'
+
+        event_component_info_text:
+            label: Info Text Color
+            type: colorpicker
+            tab: Event Component Colors
+            comment: Text color for informational messages
+            default: '#004085'
+
+        # Additional Settings
+        _additional_section:
+            label: Additional Settings
+            type: section
+            comment: Other customization options
+
+        custom_css:
+            label: Custom CSS
+            type: codeeditor
+            tab: Advanced
+            language: css
+            comment: Add custom CSS to override or extend the default styles
+            placeholder: |
+                /* Example:
+                .event-card {
+                    border-radius: 20px;
+                }
+                */

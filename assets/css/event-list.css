@@ -1,0 +1,428 @@
+/* ===================================
+   Event List Component Styles
+   =================================== */
+
+/* CSS Variables */
+:root {
+    --event-primary-color: #003866;
+    --event-secondary-color: #0065b8;
+    --event-white: #ffffff;
+    --event-text-primary: #2d3748;
+    --event-text-secondary: #495057;
+    --event-text-muted: #6c757d;
+    --event-bg-light: #f8f9fa;
+    --event-border-color: #e9ecef;
+
+    --event-gradient: linear-gradient(135deg, var(--event-primary-color) 0%, var(--event-secondary-color) 100%);
+
+    --event-radius-lg: 15px;
+    --event-radius-md: 12px;
+    --event-radius-sm: 10px;
+    --event-radius-xs: 8px;
+    --event-radius-pill: 20px;
+
+    --event-spacing-xl: 2rem;
+    --event-spacing-lg: 1.5rem;
+    --event-spacing-md: 1rem;
+    --event-spacing-sm: 0.75rem;
+    --event-spacing-xs: 0.5rem;
+    --event-spacing-xxs: 0.375rem;
+
+    --event-font-xl: 2rem;
+    --event-font-lg: 1.75rem;
+    --event-font-md: 1.5rem;
+    --event-font-base: 1.25rem;
+    --event-font-sm: 0.95rem;
+    --event-font-xs: 0.875rem;
+    --event-font-xxs: 0.85rem;
+    --event-font-tiny: 0.75rem;
+
+    --event-shadow-sm: 0 2px 10px rgba(0,0,0,0.1);
+    --event-shadow-md: 0 5px 20px rgba(0,0,0,0.08);
+    --event-shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+    --event-shadow-xl: 0 15px 40px rgba(0,0,0,0.15);
+    --event-shadow-primary: 0 10px 30px rgba(102, 126, 234, 0.3);
+    --event-shadow-primary-hover: 0 5px 15px rgba(102, 126, 234, 0.4);
+
+    --event-transition: all 0.3s ease;
+
+    --event-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Base Component Styles */
+.event-list-component {
+    font-family: var(--event-font-family);
+}
+
+/* Search and Filter Section */
+.event-search-filter {
+    background: var(--event-gradient);
+    border-radius: var(--event-radius-lg);
+    padding: var(--event-spacing-xl);
+    margin-bottom: var(--event-spacing-xl);
+    box-shadow: var(--event-shadow-primary);
+}
+
+.event-search-filter h2 {
+    color: var(--event-white);
+    font-weight: 600;
+    margin-bottom: var(--event-spacing-lg);
+    font-size: var(--event-font-lg);
+}
+
+.event-search-filter .form-control {
+    border-radius: var(--event-radius-sm);
+    border: none;
+    padding: var(--event-spacing-sm) var(--event-spacing-md);
+    box-shadow: var(--event-shadow-sm);
+}
+
+.event-search-filter .btn {
+    border-radius: var(--event-radius-sm);
+    padding: var(--event-spacing-sm) var(--event-spacing-xl);
+    font-weight: 600;
+    border: none;
+}
+
+/* Event Card */
+.event-card {
+    background: var(--event-white);
+    border-radius: var(--event-radius-lg);
+    overflow: hidden;
+    transition: var(--event-transition);
+    box-shadow: var(--event-shadow-md);
+    margin-bottom: var(--event-spacing-lg);
+    border: none;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--event-shadow-xl);
+}
+
+.event-card-header {
+    background: var(--event-gradient);
+    color: var(--event-white);
+    padding: var(--event-spacing-lg);
+    position: relative;
+    min-height: 120px;
+}
+
+.event-card-header h3 {
+    font-size: var(--event-font-md);
+    font-weight: 700;
+    margin-bottom: var(--event-spacing-xs);
+    color: var(--event-white);
+}
+
+.event-date-badge {
+    position: absolute;
+    top: var(--event-spacing-md);
+    right: var(--event-spacing-md);
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    border-radius: var(--event-radius-md);
+    padding: var(--event-spacing-sm) var(--event-spacing-md);
+    text-align: center;
+    min-width: 80px;
+}
+
+.event-date-badge .day {
+    font-size: var(--event-font-xl);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--event-white);
+}
+
+.event-date-badge .month {
+    font-size: var(--event-font-xs);
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+}
+
+.event-card-body {
+    padding: var(--event-spacing-lg);
+}
+
+/* Event Meta Information */
+.event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--event-spacing-lg);
+    margin-bottom: var(--event-spacing-md);
+}
+
+.event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--event-spacing-xs);
+    color: var(--event-text-muted);
+    font-size: var(--event-font-sm);
+}
+
+.event-meta-item i {
+    color: var(--event-primary-color);
+    font-size: 1.1rem;
+}
+
+.event-description {
+    color: var(--event-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--event-spacing-md);
+}
+
+.event-location {
+    background: var(--event-bg-light);
+    border-radius: var(--event-radius-sm);
+    padding: var(--event-spacing-md);
+    margin-bottom: var(--event-spacing-md);
+}
+
+.event-location i {
+    color: var(--event-primary-color);
+    margin-right: var(--event-spacing-xs);
+}
+
+.event-tags {
+    display: flex;
+    gap: var(--event-spacing-xs);
+    flex-wrap: wrap;
+    margin-bottom: var(--event-spacing-md);
+}
+
+.event-tag {
+    background: var(--event-gradient);
+    color: var(--event-white);
+    padding: var(--event-spacing-xxs) var(--event-spacing-md);
+    border-radius: var(--event-radius-pill);
+    font-size: var(--event-font-xxs);
+    font-weight: 600;
+}
+
+/* Event Actions */
+.event-actions {
+    display: flex;
+    gap: var(--event-spacing-md);
+    margin-top: var(--event-spacing-lg);
+}
+
+.btn-event-primary {
+    background: var(--event-gradient);
+    border: none;
+    color: var(--event-white);
+    padding: var(--event-spacing-sm) var(--event-spacing-xl);
+    border-radius: var(--event-radius-sm);
+    font-weight: 600;
+    transition: var(--event-transition);
+}
+
+.btn-event-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--event-shadow-primary-hover);
+    color: var(--event-white);
+}
+
+.btn-event-outline {
+    border: 2px solid var(--event-primary-color);
+    color: var(--event-primary-color);
+    background: transparent;
+    padding: var(--event-spacing-sm) var(--event-spacing-xl);
+    border-radius: var(--event-radius-sm);
+    font-weight: 600;
+    transition: var(--event-transition);
+}
+
+.btn-event-outline:hover {
+    background: var(--event-primary-color);
+    color: var(--event-white);
+}
+
+/* No Events State */
+.no-events {
+    text-align: center;
+    padding: 4rem var(--event-spacing-xl);
+    background: var(--event-white);
+    border-radius: var(--event-radius-lg);
+    box-shadow: var(--event-shadow-md);
+}
+
+.no-events i {
+    font-size: 4rem;
+    color: var(--event-primary-color);
+    margin-bottom: var(--event-spacing-md);
+}
+
+.no-events h3 {
+    color: var(--event-text-secondary);
+    margin-bottom: var(--event-spacing-xs);
+}
+
+.no-events p {
+    color: var(--event-text-muted);
+}
+
+/* ===================================
+   Compact View Styles
+   =================================== */
+
+.event-list-compact {
+    font-family: var(--event-font-family);
+}
+
+.compact-header {
+    background: var(--event-gradient);
+    color: var(--event-white);
+    padding: var(--event-spacing-xl);
+    border-radius: var(--event-radius-lg) var(--event-radius-lg) 0 0;
+    margin-bottom: 0;
+}
+
+.compact-header h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: var(--event-font-lg);
+}
+
+.compact-container {
+    background: var(--event-white);
+    border-radius: 0 0 var(--event-radius-lg) var(--event-radius-lg);
+    box-shadow: var(--event-shadow-lg);
+    overflow: hidden;
+}
+
+.compact-event-item {
+    display: flex;
+    align-items: center;
+    padding: var(--event-spacing-lg);
+    border-bottom: 1px solid var(--event-border-color);
+    transition: var(--event-transition);
+    cursor: pointer;
+}
+
+.compact-event-item:hover {
+    background: var(--event-bg-light);
+    padding-left: var(--event-spacing-xl);
+}
+
+.compact-event-item:last-child {
+    border-bottom: none;
+}
+
+.compact-date-box {
+    background: var(--event-gradient);
+    color: var(--event-white);
+    border-radius: var(--event-radius-md);
+    padding: var(--event-spacing-md);
+    text-align: center;
+    min-width: 80px;
+    margin-right: var(--event-spacing-lg);
+    flex-shrink: 0;
+}
+
+.compact-date-box .day {
+    font-size: var(--event-font-xl);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.compact-date-box .month-year {
+    font-size: var(--event-font-tiny);
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+}
+
+.compact-event-details {
+    flex: 1;
+}
+
+.compact-event-title {
+    font-size: var(--event-font-base);
+    font-weight: 600;
+    color: var(--event-text-primary);
+    margin-bottom: var(--event-spacing-xs);
+}
+
+.compact-event-meta {
+    display: flex;
+    gap: var(--event-spacing-lg);
+    flex-wrap: wrap;
+    color: var(--event-text-muted);
+    font-size: 0.9rem;
+}
+
+.compact-event-meta span {
+    display: flex;
+    align-items: center;
+    gap: var(--event-spacing-xs);
+}
+
+.compact-event-meta i {
+    color: var(--event-primary-color);
+}
+
+.compact-event-action {
+    margin-left: var(--event-spacing-md);
+    flex-shrink: 0;
+}
+
+.btn-compact-view {
+    background: transparent;
+    border: 2px solid var(--event-primary-color);
+    color: var(--event-primary-color);
+    padding: var(--event-spacing-xs) var(--event-spacing-lg);
+    border-radius: var(--event-radius-xs);
+    font-weight: 600;
+    transition: var(--event-transition);
+}
+
+.btn-compact-view:hover {
+    background: var(--event-primary-color);
+    color: var(--event-white);
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+@media (max-width: 768px) {
+    .event-card-header h3 {
+        font-size: var(--event-font-base);
+        padding-right: 90px;
+    }
+
+    .event-meta {
+        flex-direction: column;
+        gap: var(--event-spacing-sm);
+    }
+
+    .event-actions {
+        flex-direction: column;
+    }
+
+    .compact-event-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .compact-date-box {
+        margin-bottom: var(--event-spacing-md);
+        margin-right: 0;
+    }
+
+    .compact-event-meta {
+        flex-direction: column;
+        gap: var(--event-spacing-xs);
+    }
+
+    .compact-event-action {
+        margin-left: 0;
+        margin-top: var(--event-spacing-md);
+        width: 100%;
+    }
+
+    .btn-compact-view {
+        width: 100%;
+    }
+}

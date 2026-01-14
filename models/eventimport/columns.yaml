@@ -1,0 +1,47 @@
+# ===================================
+#  Import/Export Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: Event Name
+        type: text
+    slug:
+        label: Slug (URL)
+        type: text
+    description:
+        label: Description
+        type: text
+    time_begin:
+        label: Start Date/Time
+        type: text
+    time_end:
+        label: End Date/Time
+        type: text
+    repeat_event:
+        label: Repeat Event
+        type: text
+    repeat_mode:
+        label: Repeat Mode
+        type: text
+    end_repeat_on:
+        label: End Repeat On
+        type: text
+    location_street:
+        label: Street
+        type: text
+    location_number:
+        label: House Number
+        type: text
+    location_zip:
+        label: ZIP Code
+        type: text
+    location_city:
+        label: City
+        type: text
+    location_country:
+        label: Country
+        type: text
+    location_misc:
+        label: Additional Location Info
+        type: text

@@ -30,7 +30,8 @@ class Plugin extends PluginBase
         'ImpulseTechnologies\Campaignr\Components\Calendar' => 'campaignrCalendar',
         'ImpulseTechnologies\Campaignr\Components\EventComponent' => 'campaignrEvent',
         'ImpulseTechnologies\Campaignr\Components\Upcoming' => 'campaignrUpcoming',
-        'ImpulseTechnologies\Campaignr\Components\Ical' => 'campaignrIcal'
+        'ImpulseTechnologies\Campaignr\Components\Ical' => 'campaignrIcal',
+        'ImpulseTechnologies\Campaignr\Components\EventList' => 'campaignrEventList'
       ];
     }
 
@@ -83,5 +84,17 @@ class Plugin extends PluginBase
 
     public function registerSettings()
     {
+        return [
+            'settings' => [
+                'label'       => 'Campaignr Settings',
+                'description' => 'Customize event component colors and styles',
+                'category'    => 'Events',
+                'icon'        => 'icon-palette',
+                'class'       => 'ImpulseTechnologies\Campaignr\Models\Settings',
+                'order'       => 500,
+                'keywords'    => 'events colors theme style campaignr',
+                'permissions' => ['campaignr.events.*']
+            ]
+        ];
     }
 }

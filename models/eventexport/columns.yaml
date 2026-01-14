@@ -1,0 +1,56 @@
+# ===================================
+#  Export Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        type: number
+    name:
+        label: Event Name
+        type: text
+    slug:
+        label: Slug
+        type: text
+    description:
+        label: Description
+        type: text
+    time_begin:
+        label: Start Date/Time
+        type: datetime
+    time_end:
+        label: End Date/Time
+        type: datetime
+    repeat_event:
+        label: Repeat Event
+        type: text
+    repeat_mode:
+        label: Repeat Mode
+        type: text
+    end_repeat_on:
+        label: End Repeat On
+        type: datetime
+    location_street:
+        label: Street
+        type: text
+    location_number:
+        label: House Number
+        type: text
+    location_zip:
+        label: ZIP Code
+        type: text
+    location_city:
+        label: City
+        type: text
+    location_country:
+        label: Country
+        type: text
+    location_misc:
+        label: Additional Location Info
+        type: text
+    created_at:
+        label: Created At
+        type: datetime
+    updated_at:
+        label: Updated At
+        type: datetime
