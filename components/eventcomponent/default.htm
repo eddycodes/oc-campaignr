@@ -146,13 +146,11 @@
     <!-- Event Actions -->
     <div class="event-actions">
         <!-- Add to Calendar Button -->
-        {% if __SELF__.property('icalPage') %}
-        <a href="{{ __SELF__.property('icalPage')|page({ (__SELF__.property('icalPageSlug')): event.slug }) }}"
+        <a href="{{ url('/calendar/download/' ~ event.slug) }}"
            class="event-btn event-btn-primary">
             <i class="fas fa-calendar-plus"></i>
             Add to Calendar
         </a>
-        {% endif %}
 
         <!-- Share Button (you can add social media sharing) -->
         <button class="event-btn event-btn-secondary" onclick="if(navigator.share){navigator.share({title:'{{ event.name|e('js') }}',text:'{{ event.description|striptags|e('js') }}',url:window.location.href})}else{alert('Share: '+window.location.href)}">
