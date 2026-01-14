@@ -1,4 +1,4 @@
-<?php namespace HendrikErz\Campaignr\Controllers;
+<?php namespace ImpulseTechnologies\Campaignr\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
@@ -25,7 +25,7 @@ class Events extends Controller
     parent::__construct();
     // Mark the big "Campaignr" backend button as active while this controller
     // is active.
-    BackendMenu::setContext('HendrikErz.Campaignr', 'main-menu-item');
+    BackendMenu::setContext('impulsetechnologies.campaignr', 'main-menu-item');
   }
 
   public function create() {
@@ -34,7 +34,7 @@ class Events extends Controller
 
     // This Javascript adds some classes to containers and performs otherwise
     // necessary stuff.
-    $this->addJs('/plugins/hendrikerz/campaignr/assets/js/event-form.js');
+    $this->addJs('/plugins/impulsetechnologies/campaignr/assets/js/event-form.js');
 
     return $this->asExtension('FormController')->create();
   }
@@ -42,7 +42,7 @@ class Events extends Controller
   public function update($recordId = null) {
     // This Javascript adds some classes to containers and performs otherwise
     // necessary stuff.
-    $this->addJs('/plugins/hendrikerz/campaignr/assets/js/event-form.js');
+    $this->addJs('/plugins/impulsetechnologies/campaignr/assets/js/event-form.js');
 
     return $this->asExtension('FormController')->update($recordId);
   }

@@ -1,10 +1,10 @@
 name: Events
-modelClass: HendrikErz\Campaignr\Models\Event
-form: $/hendrikerz/campaignr/models/event/fields.yaml
-defaultRedirect: hendrikerz/campaignr/events
+modelClass: ImpulseTechnologies\Campaignr\Models\Event
+form: $/impulsetechnologies/campaignr/models/event/fields.yaml
+defaultRedirect: impulsetechnologies/campaignr/events
 create:
-    redirect: 'hendrikerz/campaignr/events/update/:id'
-    redirectClose: hendrikerz/campaignr/events
+    redirect: 'impulsetechnologies/campaignr/events/update/:id'
+    redirectClose: impulsetechnologies/campaignr/events
 update:
-    redirect: hendrikerz/campaignr/events
-    redirectClose: hendrikerz/campaignr/events
+    redirect: impulsetechnologies/campaignr/events
+    redirectClose: impulsetechnologies/campaignr/events

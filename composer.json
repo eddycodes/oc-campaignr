@@ -1,0 +1,21 @@
+{
+    "name": "impulsetechnologies/wn-campaignr",
+    "type": "winter-plugin",
+    "description": "Create and manage events, workshops, calls to action and campaigns.",
+    "keywords": ["winter", "winter cms", "events", "calendar", "campaigns"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Impulse Technologies"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "composer/installers": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ImpulseTechnologies\\Campaignr\\": ""
+        }
+    }
+}

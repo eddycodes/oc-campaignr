@@ -1,6 +1,6 @@
-<?php namespace HendrikErz\Campaignr\Components;
+<?php namespace ImpulseTechnologies\Campaignr\Components;
 
-use HendrikErz\Campaignr\Models\Event;
+use ImpulseTechnologies\Campaignr\Models\Event;
 use Cms\Classes\Page;
 use Carbon\Carbon;
 
@@ -9,8 +9,8 @@ class Upcoming extends \Cms\Classes\ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'hendrikerz.campaignr::lang.components.upcoming.name',
-            'description' => 'hendrikerz.campaignr::lang.components.upcoming.description'
+            'name' => 'impulsetechnologies.campaignr::lang.components.upcoming.name',
+            'description' => 'impulsetechnologies.campaignr::lang.components.upcoming.description'
         ];
     }
 
@@ -18,27 +18,27 @@ class Upcoming extends \Cms\Classes\ComponentBase
     {
         return [
           'sorting' => [
-              'title' => 'hendrikerz.campaignr::lang.components.upcoming.sorting_title',
-              'description' => 'hendrikerz.campaignr::lang.components.upcoming.sorting_description',
+              'title' => 'impulsetechnologies.campaignr::lang.components.upcoming.sorting_title',
+              'description' => 'impulsetechnologies.campaignr::lang.components.upcoming.sorting_description',
               'type' => 'checkbox',
               'default' => 'checked'
           ],
           'evtNumber' => [
-            'title' => 'hendrikerz.campaignr::lang.components.upcoming.number_title',
-            'description' => 'hendrikerz.campaignr::lang.components.upcoming.number_description',
+            'title' => 'impulsetechnologies.campaignr::lang.components.upcoming.number_title',
+            'description' => 'impulsetechnologies.campaignr::lang.components.upcoming.number_description',
             'default' => 3,
             'validationPattern' => '^[0-9]+$',
-            'validationMessage' => 'hendrikerz.campaignr::lang.components.upcoming.number_validation'
+            'validationMessage' => 'impulsetechnologies.campaignr::lang.components.upcoming.number_validation'
           ],
           'eventPage' => [
-              'title'         => 'hendrikerz.campaignr::lang.components.upcoming.page_title',
-              'description'   => 'hendrikerz.campaignr::lang.components.upcoming.page_description',
+              'title'         => 'impulsetechnologies.campaignr::lang.components.upcoming.page_title',
+              'description'   => 'impulsetechnologies.campaignr::lang.components.upcoming.page_description',
               'type'          => 'dropdown',
               'default'       => 'event'
           ],
           'eventSlug' => [
-              'title'             => 'hendrikerz.campaignr::lang.components.upcoming.slug_name',
-              'description'       => 'hendrikerz.campaignr::lang.components.upcoming.slug_description',
+              'title'             => 'impulsetechnologies.campaignr::lang.components.upcoming.slug_name',
+              'description'       => 'impulsetechnologies.campaignr::lang.components.upcoming.slug_description',
               'default'           => ':slug',
               'type'              => 'string'
           ]

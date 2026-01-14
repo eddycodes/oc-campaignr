@@ -1,6 +1,6 @@
-<?php namespace HendrikErz\Campaignr\Components;
+<?php namespace ImpulseTechnologies\Campaignr\Components;
 
-use HendrikErz\Campaignr\Models\Event;
+use ImpulseTechnologies\Campaignr\Models\Event;
 use Cms\Classes\Page;
 
 class EventComponent extends \Cms\Classes\ComponentBase
@@ -8,8 +8,8 @@ class EventComponent extends \Cms\Classes\ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'hendrikerz.campaignr::lang.components.event.name',
-            'description' => 'hendrikerz.campaignr::lang.components.event.description'
+            'name' => 'impulsetechnologies.campaignr::lang.components.event.name',
+            'description' => 'impulsetechnologies.campaignr::lang.components.event.description'
         ];
     }
 
@@ -17,26 +17,26 @@ class EventComponent extends \Cms\Classes\ComponentBase
     {
         return [
           'eventSlug' => [
-            'title'         => 'hendrikerz.campaignr::lang.components.event.slug_name',
-            'description'   => 'hendrikerz.campaignr::lang.components.event.slug_description',
+            'title'         => 'impulsetechnologies.campaignr::lang.components.event.slug_name',
+            'description'   => 'impulsetechnologies.campaignr::lang.components.event.slug_description',
             'default'       => '{{ :slug }}',
             'type'          => 'string'
           ],
           'calendarPage' => [
-              'title'       => 'hendrikerz.campaignr::lang.components.event.page_name',
-              'description' => 'hendrikerz.campaignr::lang.components.event.page_description',
+              'title'       => 'impulsetechnologies.campaignr::lang.components.event.page_name',
+              'description' => 'impulsetechnologies.campaignr::lang.components.event.page_description',
               'type'        => 'dropdown',
               'default'     => 'calendar'
           ],
           'icalPage' => [
-              'title'       => 'hendrikerz.campaignr::lang.components.event.ical.page_name',
-              'description' => 'hendrikerz.campaignr::lang.components.event.ical.page_description',
+              'title'       => 'impulsetechnologies.campaignr::lang.components.event.ical.page_name',
+              'description' => 'impulsetechnologies.campaignr::lang.components.event.ical.page_description',
               'default'     => 'download/calendar',
               'type'        => 'dropdown'
           ],
           'icalPageSlug' => [
-              'title'       => 'hendrikerz.campaignr::lang.components.event.ical.slug_name',
-              'description' => 'hendrikerz.campaignr::lang.components.event.ical.slug_description',
+              'title'       => 'impulsetechnologies.campaignr::lang.components.event.ical.slug_name',
+              'description' => 'impulsetechnologies.campaignr::lang.components.event.ical.slug_description',
               'default'     => ':slug',
               'type'        => 'string'
           ]

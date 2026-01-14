@@ -4,7 +4,7 @@
     <?= Form::open([
       'class' => 'layout',
       'data-change-monitor' => 'true',
-      'data-window-close-confirm' => e(trans('hendrikerz.campaignr::lang.form.close_confirm')),
+      'data-window-close-confirm' => e(trans('impulsetechnologies.campaignr::lang.form.close_confirm')),
       'id' => 'event-form'
       ]) ?>
       <?= $this->formRender() ?>
@@ -14,5 +14,5 @@
 
   <?php else: ?>
     <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
-    <p><a href="<?= Backend::url('hendrikerz/campaignr/events') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')) ?></a></p>
+    <p><a href="<?= Backend::url('impulsetechnologies/campaignr/events') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')) ?></a></p>
   <?php endif ?>

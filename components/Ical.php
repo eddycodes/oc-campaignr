@@ -1,6 +1,6 @@
-<?php namespace HendrikErz\Campaignr\Components;
+<?php namespace ImpulseTechnologies\Campaignr\Components;
 
-use HendrikErz\Campaignr\Models\Event;
+use ImpulseTechnologies\Campaignr\Models\Event;
 use Carbon\Carbon;
 use Cms\Classes\Page;
 
@@ -9,8 +9,8 @@ class Ical extends \Cms\Classes\ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'hendrikerz.campaignr::lang.components.ical.name',
-            'description' => 'hendrikerz.campaignr::lang.components.ical.description'
+            'name' => 'impulsetechnologies.campaignr::lang.components.ical.name',
+            'description' => 'impulsetechnologies.campaignr::lang.components.ical.description'
         ];
     }
 
@@ -18,14 +18,14 @@ class Ical extends \Cms\Classes\ComponentBase
     {
         return [
           'eventSlug' => [
-              'title'             => 'hendrikerz.campaignr::lang.components.ical.slug_name',
-              'description'       => 'hendrikerz.campaignr::lang.components.ical.slug_description',
+              'title'             => 'impulsetechnologies.campaignr::lang.components.ical.slug_name',
+              'description'       => 'impulsetechnologies.campaignr::lang.components.ical.slug_description',
               'default'           => '{{ :slug }}',
               'type'              => 'string'
           ],
           'eventPage' => [
-                'title'         => 'hendrikerz.campaignr::lang.components.ical.page_name',
-                'description'   => 'hendrikerz.campaignr::lang.components.ical.page_description',
+                'title'         => 'impulsetechnologies.campaignr::lang.components.ical.page_name',
+                'description'   => 'impulsetechnologies.campaignr::lang.components.ical.page_description',
                 'type'          => 'dropdown',
                 'default'       => 'event'
           ]

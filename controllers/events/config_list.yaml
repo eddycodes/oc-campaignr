@@ -1,7 +1,7 @@
-title: 'hendrikerz.campaignr::lang.plugin.events'
-modelClass: HendrikErz\Campaignr\Models\Event
-list: $/hendrikerz/campaignr/models/event/columns.yaml
-recordUrl: 'hendrikerz/campaignr/events/update/:id'
+title: 'impulsetechnologies.campaignr::lang.plugin.events'
+modelClass: ImpulseTechnologies\Campaignr\Models\Event
+list: $/impulsetechnologies/campaignr/models/event/columns.yaml
+recordUrl: 'impulsetechnologies/campaignr/events/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
 recordsPerPage: 20
 showSetup: true

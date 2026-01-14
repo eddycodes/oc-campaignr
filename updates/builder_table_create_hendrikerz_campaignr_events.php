@@ -1,13 +1,13 @@
-<?php namespace HendrikErz\Campaignr\Updates;
+<?php namespace ImpulseTechnologies\Campaignr\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableCreateHendrikerzCampaignrEvents extends Migration
+class BuilderTableCreateImpulseTechnologiesCampaignrEvents extends Migration
 {
     public function up()
     {
-        Schema::create('hendrikerz_campaignr_events', function($table)
+        Schema::create('impulsetechnologies_campaignr_events', function($table)
         {
             $table->engine = 'InnoDB';
             // First general information about the event
@@ -48,6 +48,6 @@ class BuilderTableCreateHendrikerzCampaignrEvents extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('hendrikerz_campaignr_events');
+        Schema::dropIfExists('impulsetechnologies_campaignr_events');
     }
 }

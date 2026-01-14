@@ -1,6 +1,6 @@
-<?php namespace HendrikErz\Campaignr\Components;
+<?php namespace ImpulseTechnologies\Campaignr\Components;
 
-use HendrikErz\Campaignr\Models\Event;
+use ImpulseTechnologies\Campaignr\Models\Event;
 use Cms\Classes\Page;
 
 class Calendar extends \Cms\Classes\ComponentBase
@@ -8,8 +8,8 @@ class Calendar extends \Cms\Classes\ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'hendrikerz.campaignr::lang.components.calendar.name',
-            'description' => 'hendrikerz.campaignr::lang.components.calendar.description'
+            'name' => 'impulsetechnologies.campaignr::lang.components.calendar.name',
+            'description' => 'impulsetechnologies.campaignr::lang.components.calendar.description'
         ];
     }
 
@@ -17,32 +17,32 @@ class Calendar extends \Cms\Classes\ComponentBase
     {
         return [
           'monthParam' => [
-            'title'             => 'hendrikerz.campaignr::lang.components.calendar.month_name',
-            'description'       => 'hendrikerz.campaignr::lang.components.calendar.month_description',
+            'title'             => 'impulsetechnologies.campaignr::lang.components.calendar.month_name',
+            'description'       => 'impulsetechnologies.campaignr::lang.components.calendar.month_description',
             'default'           => '{{ :month }}',
             'type'              => 'string'
           ],
           'yearParam' => [
-            'title'             => 'hendrikerz.campaignr::lang.components.calendar.year_name',
-            'description'       => 'hendrikerz.campaignr::lang.components.calendar.year_description',
+            'title'             => 'impulsetechnologies.campaignr::lang.components.calendar.year_name',
+            'description'       => 'impulsetechnologies.campaignr::lang.components.calendar.year_description',
             'default'           => '{{ :year }}',
             'type'              => 'string',
           ],
           'eventPage' => [
-                'title'         => 'hendrikerz.campaignr::lang.components.calendar.page_name',
-                'description'   => 'hendrikerz.campaignr::lang.components.calendar.page_description',
+                'title'         => 'impulsetechnologies.campaignr::lang.components.calendar.page_name',
+                'description'   => 'impulsetechnologies.campaignr::lang.components.calendar.page_description',
                 'type'          => 'dropdown',
                 'default'       => 'event'
           ],
           'eventSlug' => [
-            'title'             => 'hendrikerz.campaignr::lang.components.calendar.slug_name',
-            'description'       => 'hendrikerz.campaignr::lang.components.calendar.slug_description',
+            'title'             => 'impulsetechnologies.campaignr::lang.components.calendar.slug_name',
+            'description'       => 'impulsetechnologies.campaignr::lang.components.calendar.slug_description',
             'default'           => ':slug',
             'type'              => 'string',
           ],
           'icalPage' => [
-              'title'           => 'hendrikerz.campaignr::lang.components.calendar.ical_name',
-              'description'     => 'hendrikerz.campaignr::lang.components.calendar.ical_description',
+              'title'           => 'impulsetechnologies.campaignr::lang.components.calendar.ical_name',
+              'description'     => 'impulsetechnologies.campaignr::lang.components.calendar.ical_description',
               'default'         => 'download/calendar',
               'type'            => 'dropdown'
           ]

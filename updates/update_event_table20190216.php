@@ -1,4 +1,4 @@
-<?php namespace HendrikErz\Campaignr\Updates;
+<?php namespace ImpulseTechnologies\Campaignr\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
@@ -7,7 +7,7 @@ class UpdateEventTable20190216 extends Migration
 {
     public function up()
     {
-      Schema::table('hendrikerz_campaignr_events', function ($table) {
+      Schema::table('impulsetechnologies_campaignr_events', function ($table) {
           // Remove nullable attribute from a lot of columns
           $table->boolean('repeat_event')->default(0)->change();
           $table->integer('repeat_mode')->unsigned()->default(2)->change(); // New default: Weekly
@@ -25,7 +25,7 @@ class UpdateEventTable20190216 extends Migration
     public function down()
     {
         // Reverse the changes
-        Schema::table('hendrikerz_campaignr_events', function ($table) {
+        Schema::table('impulsetechnologies_campaignr_events', function ($table) {
           $table->boolean('repeat_event')->nullable(false)->unsigned(false)->default(0)->change();
           $table->integer('repeat_mode')->nullable(false)->unsigned()->default(0)->change();
           $table->integer('dow')->unsigned()->nullable(false)->change();

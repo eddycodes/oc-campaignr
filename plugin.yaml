@@ -1,28 +1,28 @@
 plugin:
-    name: 'hendrikerz.campaignr::lang.plugin.name'
-    description: 'hendrikerz.campaignr::lang.plugin.description'
-    author: 'Hendrik Erz'
+    name: 'impulsetechnologies.campaignr::lang.plugin.name'
+    description: 'impulsetechnologies.campaignr::lang.plugin.description'
+    author: 'Impulse Technologies'
     icon: oc-icon-bullhorn
     homepage: ''
 navigation:
     main-menu-item:
-        label: 'hendrikerz.campaignr::lang.plugin.name'
-        url: hendrikerz/campaignr/events
+        label: 'impulsetechnologies.campaignr::lang.plugin.name'
+        url: impulsetechnologies/campaignr/events
         icon: icon-bullhorn
         sideMenu:
             event-create:
-                label: 'hendrikerz.campaignr::lang.plugin.create'
-                url: 'hendrikerz/campaignr/events/create'
+                label: 'impulsetechnologies.campaignr::lang.plugin.create'
+                url: 'impulsetechnologies/campaignr/events/create'
                 icon: icon-plus
             event-list:
-                label: 'hendrikerz.campaignr::lang.plugin.events'
-                url: hendrikerz/campaignr/events
+                label: 'impulsetechnologies.campaignr::lang.plugin.events'
+                url: impulsetechnologies/campaignr/events
                 icon: icon-list
             event-calendar:
-                label: 'hendrikerz.campaignr::lang.plugin.calendar'
-                url: 'hendrikerz/campaignr/calendar'
+                label: 'impulsetechnologies.campaignr::lang.plugin.calendar'
+                url: 'impulsetechnologies/campaignr/calendar'
                 icon: icon-calendar
 permissions:
     campaignr.events.edit:
-        tab: 'hendrikerz.campaignr::lang.permissions.tab'
-        label: 'hendrikerz.campaignr::lang.permissions.edit'
+        tab: 'impulsetechnologies.campaignr::lang.permissions.tab'
+        label: 'impulsetechnologies.campaignr::lang.permissions.edit'

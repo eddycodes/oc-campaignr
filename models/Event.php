@@ -1,4 +1,4 @@
-<?php namespace HendrikErz\Campaignr\Models;
+<?php namespace ImpulseTechnologies\Campaignr\Models;
 
 use Model;
 use Carbon\Carbon;
@@ -8,9 +8,9 @@ use Carbon\Carbon;
  */
 class Event extends Model
 {
-    use \October\Rain\Database\Traits\Validation;
-    use \October\Rain\Database\Traits\SoftDelete;
-    use \October\Rain\Database\Traits\Sluggable;
+    use \Winter\Storm\Database\Traits\Validation;
+    use \Winter\Storm\Database\Traits\SoftDelete;
+    use \Winter\Storm\Database\Traits\Sluggable;
 
     /**
      * @var array Generate slugs for these attributes.
@@ -54,7 +54,7 @@ class Event extends Model
     /**
     * @var string The database table used by the model.
     */
-    public $table = 'hendrikerz_campaignr_events';
+    public $table = 'impulsetechnologies_campaignr_events';
 
     /**
     * @var array Validation rules
@@ -113,7 +113,7 @@ class Event extends Model
           $this->repeat_mode = 2;
         }
 
-        // October CMS uses this human-readable but programmatically weird
+        // WinterCMS uses this human-readable but programmatically weird
         // format for storing dates, so we have to transform it beforehand.
         // See https://octobercms.com/docs/database/mutators for the format.
         $evtBegin = Carbon::createFromFormat('Y-m-d H:i:s', $this->time_begin);

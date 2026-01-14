@@ -1,9 +1,9 @@
-<?php namespace HendrikErz\Campaignr\Controllers;
+<?php namespace ImpulseTechnologies\Campaignr\Controllers;
 
 use Backend\Classes\Controller;
 use System\Classes\CombineAssets;
 use BackendMenu;
-use HendrikErz\Campaignr\Models\Event;
+use ImpulseTechnologies\Campaignr\Models\Event;
 use Carbon\Carbon;
 
 class Calendar extends Controller
@@ -20,7 +20,7 @@ class Calendar extends Controller
     parent::__construct();
     // Mark the big "Campaignr" backend button as active while this controller
     // is active.
-    BackendMenu::setContext('HendrikErz.Campaignr', 'main-menu-item');
+    BackendMenu::setContext('impulsetechnologies.campaignr', 'main-menu-item');
   }
 
   public function index() {
@@ -29,8 +29,8 @@ class Calendar extends Controller
 
     // Inject the LESS
     $styles = [
-      '/hendrikerz/campaignr/assets/css/calendar.less',
-      '/hendrikerz/campaignr/assets/css/calendar_backend.less'
+      '/impulsetechnologies/campaignr/assets/css/calendar.less',
+      '/impulsetechnologies/campaignr/assets/css/calendar_backend.less'
     ];
     $this->addCss(CombineAssets::combine($styles, plugins_path()));
 

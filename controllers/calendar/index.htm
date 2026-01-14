@@ -62,13 +62,13 @@ $startDow = $currentDate->dayOfWeekIso; // We preset currentDate with the 1st da
               <div class="events">
                 <?php foreach($events as $event): ?>
                   <?php if($event->dom <= $day && $event->mon <= $monthNum && $event->year <= $year && $event->end_day >= $day && $event->end_mon >= $monthNum && $event->end_year >= $year): ?>
-                    <a href="<?= Backend::url('/hendrikerz/campaignr/events/update/' . $event->id); ?>"><?= $event->name; ?></a>
+                    <a href="<?= Backend::url('/impulsetechnologies/campaignr/events/update/' . $event->id); ?>"><?= $event->name; ?></a>
                   <?php elseif($event->repeat_mode > 0 and date($event->time_begin) <= $todaysDate and date($event->end_repeat_on) >= $todaysDate): ?>
                     <?php if($event->repeat_mode == 1
                     || ($event->repeat_mode == 2 && $event->dow == $dow)
                     || ($event->repeat_mode == 3 && $event->dow == $dow && $event->wom == $wom)
                     || ($event->repeat_mode == 4 && $event->dom == $day && $event->mon == $monthNum)): ?>
-                      <a href="<?= Backend::url('/hendrikerz/campaignr/events/update/' . $event->id); ?>"><?= $event->name; ?></a>
+                      <a href="<?= Backend::url('/impulsetechnologies/campaignr/events/update/' . $event->id); ?>"><?= $event->name; ?></a>
                     <?php endif; ?>
                   <?php endif; ?>
                 <?php endforeach; ?>
