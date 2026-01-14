@@ -147,8 +147,8 @@
     <div class="event-actions">
         <!-- Add to Calendar Button -->
         {% if __SELF__.property('icalPage') %}
-        <a href="{{ __SELF__.property('icalPage')|page({ (__SELF__.paramName('icalPageSlug')): event.slug }) }}"
-           class="event-btn event-btn-primary" download>
+        <a href="{{ __SELF__.property('icalPage')|page({ (__SELF__.property('icalPageSlug')): event.slug }) }}"
+           class="event-btn event-btn-primary">
             <i class="fas fa-calendar-plus"></i>
             Add to Calendar
         </a>

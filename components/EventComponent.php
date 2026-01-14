@@ -193,7 +193,7 @@ class EventComponent extends ComponentBase
         $this->addCss('/plugins/impulsetechnologies/campaignr/assets/css/event-component.css');
 
         // Inject custom color variables from settings
-        $this->injectCustomColors();
+        // $this->injectCustomColors();
     }
 
     /**
