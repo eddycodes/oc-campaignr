@@ -4,12 +4,12 @@
 
 /* CSS Variables */
 :root {
-    --event-primary-color: #003866;
-    --event-secondary-color: #0065b8;
+    --event-primary-color: #243e73;
+    --event-secondary-color: #355baa;
     --event-white: #ffffff;
-    --event-text-primary: #2d3748;
-    --event-text-secondary: #495057;
-    --event-text-muted: #6c757d;
+    --event-text-primary: #000000;
+    --event-text-secondary: #000000;
+    --event-text-muted: #000000;
     --event-bg-light: #f8f9fa;
     --event-border-color: #e9ecef;
 
@@ -41,7 +41,7 @@
     --event-shadow-md: 0 5px 20px rgba(0,0,0,0.08);
     --event-shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
     --event-shadow-xl: 0 15px 40px rgba(0,0,0,0.15);
-    --event-shadow-primary: 0 10px 30px rgba(102, 126, 234, 0.3);
+    --event-shadow-primary: 0 10px 30px rgba(102, 127, 234, 0.3);
     --event-shadow-primary-hover: 0 5px 15px rgba(102, 126, 234, 0.4);
 
     --event-transition: all 0.3s ease;

@@ -5,16 +5,16 @@
 
 /* CSS Variables */
 :root {
-    --event-component-primary: #003866;
-    --event-component-secondary: #0065b8;
+    --event-component-primary: #243e73;
+    --event-component-secondary: #355baa;
     --event-component-primary-hover: #002647;
     --event-component-success: #28a745;
     --event-component-warning: #ffc107;
     --event-component-danger: #dc3545;
     --event-component-info: #17a2b8;
-    --event-component-text-primary: #2d3748;
-    --event-component-text-secondary: #495057;
-    --event-component-text-muted: #6c757d;
+    --event-component-text-primary: #000000;
+    --event-component-text-secondary: #000000;
+    --event-component-text-muted: #000000;
     --event-component-bg-light: #f8f9fa;
     --event-component-bg-info: #e7f3ff;
     --event-component-border: #e9ecef;
