@@ -1,0 +1,77 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    event:
+        label: Event
+        type: relation
+        nameFrom: name
+        descriptionFrom: time_begin
+        span: auto
+        required: true
+        tab: Registration Details
+
+    first_name:
+        label: First Name
+        type: text
+        span: left
+        required: true
+        tab: Registration Details
+
+    other_name:
+        label: Other Name
+        type: text
+        span: right
+        tab: Registration Details
+
+    last_name:
+        label: Last Name
+        type: text
+        span: auto
+        required: true
+        tab: Registration Details
+
+    email:
+        label: Email Address
+        type: email
+        span: left
+        required: true
+        tab: Contact Information
+
+    phone_number:
+        label: Phone Number
+        type: text
+        span: right
+        required: true
+        tab: Contact Information
+
+    organisation_name:
+        label: Organisation Name
+        type: text
+        span: auto
+        tab: Contact Information
+
+    additional_information:
+        label: Additional Information
+        type: textarea
+        size: large
+        span: auto
+        tab: Additional Details
+
+    created_at:
+        label: Registration Date
+        type: datepicker
+        mode: datetime
+        span: left
+        disabled: true
+        tab: Additional Details
+
+    updated_at:
+        label: Last Updated
+        type: datepicker
+        mode: datetime
+        span: right
+        disabled: true
+        tab: Additional Details

@@ -81,6 +81,12 @@
 
                 <!-- Action Buttons -->
                 <div class="event-actions">
+                    <button type="button" class="btn btn-event-register btn-register-event" 
+                            data-event-id="{{ event.id }}" 
+                            data-event-name="{{ event.name }}"
+                            {% if event.time_begin %}data-event-date="{{ event.time_begin|date('F j, Y') }}"{% endif %}>
+                        <i class="fas fa-user-plus me-2"></i>Register
+                    </button>
                     {% if eventPage %}
                     <a href="{{ eventPage|page({ slug: event.slug }) }}" class="btn btn-event-primary">
                         <i class="fas fa-ticket-alt me-2"></i>View Details

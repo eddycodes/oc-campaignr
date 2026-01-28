@@ -1,0 +1,22 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    title: Import Registrations
+    modelClass: ImpulseTechnologies\Campaignr\Models\Registration
+    list: $/impulsetechnologies/campaignr/models/registration/columns.yaml
+
+export:
+    title: Export Registrations
+    modelClass: ImpulseTechnologies\Campaignr\Models\RegistrationExport
+    list: $/impulsetechnologies/campaignr/models/registrationexport/columns.yaml
+    fileName: event_registrations.csv
+    form:
+        fields:
+            event_id:
+                label: Filter by Event
+                type: dropdown
+                options: ImpulseTechnologies\Campaignr\Models\Event::getDropdownOptions
+                emptyOption: All Events
+                span: left

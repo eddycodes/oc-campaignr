@@ -31,7 +31,8 @@ class Plugin extends PluginBase
         'ImpulseTechnologies\Campaignr\Components\EventComponent' => 'campaignrEvent',
         'ImpulseTechnologies\Campaignr\Components\Upcoming' => 'campaignrUpcoming',
         'ImpulseTechnologies\Campaignr\Components\Ical' => 'campaignrIcal',
-        'ImpulseTechnologies\Campaignr\Components\EventList' => 'campaignrEventList'
+        'ImpulseTechnologies\Campaignr\Components\EventList' => 'campaignrEventList',
+        'ImpulseTechnologies\Campaignr\Components\EventRegistration' => 'campaignrEventRegistration'
       ];
     }
 
@@ -62,6 +63,12 @@ class Plugin extends PluginBase
                         'icon'        => 'icon-calendar',
                         'url'         => \Backend::url('impulsetechnologies/campaignr/calendar'),
                         'permissions' => ['campaignr.events.*']
+                    ],
+                    'registrations' => [
+                        'label'       => 'Registrations',
+                        'icon'        => 'icon-users',
+                        'url'         => \Backend::url('impulsetechnologies/campaignr/registrations'),
+                        'permissions' => ['campaignr.registrations.*']
                     ]
                 ]
             ]
@@ -78,6 +85,10 @@ class Plugin extends PluginBase
             'campaignr.events.*' => [
                 'tab'   => 'impulsetechnologies.campaignr::lang.permissions.tab',
                 'label' => 'Access Campaign Events'
+            ],
+            'campaignr.registrations.*' => [
+                'tab'   => 'impulsetechnologies.campaignr::lang.permissions.tab',
+                'label' => 'Manage Event Registrations'
             ]
         ];
     }

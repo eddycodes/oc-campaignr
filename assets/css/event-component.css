@@ -312,6 +312,20 @@
     box-shadow: var(--event-component-shadow-sm);
 }
 
+.event-btn-register {
+    background: var(--event-component-success);
+    color: var(--event-component-white);
+    box-shadow: var(--event-component-shadow-sm);
+    font-weight: 700;
+}
+
+.event-btn-register:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    color: var(--event-component-white);
+}
+
 .event-btn i {
     font-size: 1.2rem;
 }

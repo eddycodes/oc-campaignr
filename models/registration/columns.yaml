@@ -1,0 +1,55 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: ID
+        searchable: true
+        sortable: true
+        width: 50px
+
+    event:
+        label: Event
+        relation: event
+        select: name
+        searchable: true
+        sortable: true
+
+    full_name:
+        label: Full Name
+        searchable: true
+        sortable: true
+
+    first_name:
+        label: First Name
+        searchable: true
+        sortable: true
+        invisible: true
+
+    last_name:
+        label: Last Name
+        searchable: true
+        sortable: true
+        invisible: true
+
+    email:
+        label: Email
+        searchable: true
+        sortable: true
+
+    phone_number:
+        label: Phone
+        searchable: true
+        sortable: true
+
+    organisation_name:
+        label: Organisation
+        searchable: true
+        sortable: true
+
+    created_at:
+        label: Registered On
+        type: datetime
+        sortable: true

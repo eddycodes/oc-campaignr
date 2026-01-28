@@ -1,0 +1,26 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: Event Registrations
+modelClass: ImpulseTechnologies\Campaignr\Models\Registration
+list: $/impulsetechnologies/campaignr/models/registration/columns.yaml
+
+recordUrl: impulsetechnologies/campaignr/registrations/preview/:id
+
+noRecordsMessage: backend::lang.list.no_records
+recordsPerPage: 20
+showPageNumbers: true
+showSetup: true
+showCheckboxes: true
+defaultSort:
+    column: created_at
+    direction: desc
+
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: backend::lang.list.search_prompt
+
+filter:
+    scopes: scopes

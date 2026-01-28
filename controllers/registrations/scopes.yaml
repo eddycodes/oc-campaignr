@@ -1,0 +1,12 @@
+scopes:
+
+    event:
+        label: Event
+        modelClass: ImpulseTechnologies\Campaignr\Models\Event
+        conditions: event_id = :filtered
+        nameFrom: name
+
+    date_range:
+        label: Registration Date
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'

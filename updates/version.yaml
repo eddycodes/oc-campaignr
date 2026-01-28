@@ -8,3 +8,6 @@
     - update_event_table20190216.php
 1.0.3:
     - 'Only take upcoming/repeating events for the Upcoming component.'
+1.0.4:
+    - 'Added event registration feature with email notifications and export functionality.'
+    - ./create_registrations_table.php

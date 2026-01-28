@@ -238,6 +238,23 @@
     color: var(--event-white);
 }
 
+.btn-event-register {
+    background: #28a745;
+    border: none;
+    color: var(--event-white);
+    padding: var(--event-spacing-sm) var(--event-spacing-xl);
+    border-radius: var(--event-radius-sm);
+    font-weight: 700;
+    transition: var(--event-transition);
+}
+
+.btn-event-register:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    color: var(--event-white);
+}
+
 /* No Events State */
 .no-events {
     text-align: center;

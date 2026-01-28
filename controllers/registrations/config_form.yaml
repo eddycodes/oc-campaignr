@@ -1,0 +1,20 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: Event Registration
+form: $/impulsetechnologies/campaignr/models/registration/fields.yaml
+modelClass: ImpulseTechnologies\Campaignr\Models\Registration
+
+defaultRedirect: impulsetechnologies/campaignr/registrations
+
+create:
+    redirect: impulsetechnologies/campaignr/registrations/preview/:id
+    redirectClose: impulsetechnologies/campaignr/registrations
+
+update:
+    redirect: impulsetechnologies/campaignr/registrations
+    redirectClose: impulsetechnologies/campaignr/registrations
+
+preview:
+    redirect: impulsetechnologies/campaignr/registrations

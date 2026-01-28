@@ -1,12 +1,15 @@
 <?php namespace ImpulseTechnologies\Campaignr\Components;
 
 use ImpulseTechnologies\Campaignr\Models\Event;
+use ImpulseTechnologies\Campaignr\Traits\EventRegistrationTrait;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use Carbon\Carbon;
 
 class EventList extends ComponentBase
 {
+    use EventRegistrationTrait;
+
     public $events;
     public $eventPage;
 
@@ -80,7 +83,10 @@ class EventList extends ComponentBase
         }
 
         // Inject custom color variables from settings
-        $this->injectCustomColors();
+        //$this->injectCustomColors();
+
+        // Load registration assets
+        $this->loadRegistrationAssets();
 
         $this->prepareVars();
         $this->events = $this->page['events'] = $this->loadEvents();

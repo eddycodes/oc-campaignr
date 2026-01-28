@@ -82,6 +82,16 @@ class Event extends Model
     ];
 
     /**
+     * @var array Relations
+     */
+    public $hasMany = [
+        'registrations' => [
+            'ImpulseTechnologies\Campaignr\Models\Registration',
+            'key' => 'event_id'
+        ]
+    ];
+
+    /**
      * Holds the next occurrence of this event, if the function getNextOccurrence
      * has been called and has returned true.
      * @var string
@@ -227,5 +237,15 @@ class Event extends Model
         $this->nextOccurrence = $this->nextOccurrence->toDateTimeString();
 
         return true;
+    }
+
+    /**
+     * Get dropdown options for event selection
+     *
+     * @return array
+     */
+    public static function getDropdownOptions()
+    {
+        return static::orderBy('name')->lists('name', 'id');
     }
 }

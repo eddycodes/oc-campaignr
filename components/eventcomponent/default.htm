@@ -145,6 +145,15 @@
 
     <!-- Event Actions -->
     <div class="event-actions">
+        <!-- Register Button -->
+        <button type="button" class="event-btn event-btn-register btn-register-event"
+                data-event-id="{{ event.id }}"
+                data-event-name="{{ event.name }}"
+                {% if event.time_begin %}data-event-date="{{ event.time_begin|date('F j, Y') }}"{% endif %}>
+            <i class="fas fa-user-plus"></i>
+            Register for Event
+        </button>
+
         <!-- Add to Calendar Button -->
         <a href="{{ url('/calendar/download/' ~ event.slug) }}"
            class="event-btn event-btn-primary">
@@ -203,6 +212,9 @@
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
 }
 </script>
+
+<!-- Registration Modal -->
+{% partial '@registration-modal' %}
 
 {% else %}
 <!-- Event Not Found -->

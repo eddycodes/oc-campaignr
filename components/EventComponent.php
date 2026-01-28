@@ -1,6 +1,7 @@
 <?php namespace ImpulseTechnologies\Campaignr\Components;
 
 use ImpulseTechnologies\Campaignr\Models\Event;
+use ImpulseTechnologies\Campaignr\Traits\EventRegistrationTrait;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use Carbon\Carbon;
@@ -17,6 +18,8 @@ use ValidationException;
  */
 class EventComponent extends ComponentBase
 {
+    use EventRegistrationTrait;
+
     /**
      * @var Event The event being displayed
      */
@@ -147,6 +150,9 @@ class EventComponent extends ComponentBase
     {
         // Load CSS assets
         $this->loadAssets();
+
+        // Load registration assets
+        $this->loadRegistrationAssets();
 
         // Prepare page variables
         $this->prepareVars();

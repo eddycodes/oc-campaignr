@@ -1,0 +1,41 @@
+# ===================================
+#  Export Columns
+# ===================================
+
+columns:
+
+    id:
+        label: ID
+
+    event_name:
+        label: Event Name
+
+    event_date:
+        label: Event Date
+
+    first_name:
+        label: First Name
+
+    other_name:
+        label: Other Name
+
+    last_name:
+        label: Last Name
+
+    full_name:
+        label: Full Name
+
+    email:
+        label: Email
+
+    phone_number:
+        label: Phone Number
+
+    organisation_name:
+        label: Organisation
+
+    additional_information:
+        label: Additional Information
+
+    registration_date:
+        label: Registration Date
