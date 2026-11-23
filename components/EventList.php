@@ -26,6 +26,12 @@ class EventList extends ComponentBase
     /** @var string|null Category being listed. */
     public $category;
 
+    /** @var int|null Month (1-12) being listed; only with a year. */
+    public $month;
+
+    /** @var array<int, int> Events per month (1-12) of the chosen year, for the current category. */
+    public $months = [];
+
     public function componentDetails()
     {
         return [
@@ -94,6 +100,20 @@ class EventList extends ComponentBase
                 'description' => 'Only list events that begin in this year',
                 'type' => 'string',
                 'default' => '',
+                'group' => 'Filters and pagination'
+            ],
+            'month' => [
+                'title' => 'Month',
+                'description' => 'Only list events that begin in this month (1-12); needs a year',
+                'type' => 'string',
+                'default' => '',
+                'group' => 'Filters and pagination'
+            ],
+            'filtersShowAll' => [
+                'title' => 'Date filters show every event',
+                'description' => 'When a year or month is chosen, list all its events, past and upcoming, instead of only the Period',
+                'type' => 'checkbox',
+                'default' => false,
                 'group' => 'Filters and pagination'
             ],
             'category' => [
@@ -175,28 +195,56 @@ class EventList extends ComponentBase
         $year = $this->filterValue('year');
         $this->year = $this->page['year'] = ctype_digit($year) ? (int) $year : null;
 
+        $month = $this->filterValue('month');
+        $this->month = $this->page['month'] = ($this->year && ctype_digit($month) && $month >= 1 && $month <= 12) ? (int) $month : null;
+
         $category = $this->filterValue('category');
         $this->category = $this->page['category'] = $category !== '' ? $category : null;
 
+        $byCategory = fn ($q) => $q->when($this->category, fn ($q) => $q->where('category', $this->category));
+
+        // Year (and month) choices count what choosing them would list.
         $this->years = $this->page['years'] = $this->countBy(
-            $this->baseQuery()->when($this->category, fn ($q) => $q->where('category', $this->category)),
+            $byCategory($this->periodQuery(true)),
             fn ($event) => $event->time_begin->year
         );
         krsort($this->years);
 
+        $this->months = $this->page['months'] = $this->year ? $this->countBy(
+            $byCategory($this->periodQuery(true))->whereYear('time_begin', $this->year),
+            fn ($event) => $event->time_begin->month
+        ) : [];
+        ksort($this->months);
+
         $this->categories = $this->page['categories'] = $this->countBy(
-            $this->baseQuery()->when($this->year, fn ($q) => $q->whereYear('time_begin', $this->year))->whereNotNull('category'),
+            $this->dateFilter($this->periodQuery($this->year !== null))->whereNotNull('category'),
             fn ($event) => $event->category
         );
         ksort($this->categories);
     }
 
     /**
-     * A filter's value: the query string when enabled, otherwise the property.
+     * The Period's events; with filtersShowAll, every event once a date filter applies.
+     */
+    protected function periodQuery(bool $dateFiltered)
+    {
+        return ($dateFiltered && $this->property('filtersShowAll')) ? Event::query() : $this->baseQuery();
+    }
+
+    protected function dateFilter($query)
+    {
+        return $query
+            ->when($this->year, fn ($q) => $q->whereYear('time_begin', $this->year))
+            ->when($this->month, fn ($q) => $q->whereMonth('time_begin', $this->month));
+    }
+
+    /**
+     * A filter's value: the request (query string, or the data of an onFilter
+     * AJAX request) when queryFilters is on, otherwise the property.
      */
     protected function filterValue(string $name): string
     {
-        $value = $this->property('queryFilters') ? Request::query($name, '') : $this->property($name, '');
+        $value = $this->property('queryFilters') ? Request::input($name, '') : $this->property($name, '');
 
         return trim(is_string($value) ? $value : '');
     }
@@ -229,18 +277,21 @@ class EventList extends ComponentBase
 
     protected function loadEvents()
     {
-        $query = $this->baseQuery()
+        // A single month reads best in calendar order.
+        $direction = $this->month ? 'asc' : ($this->property('sortOrder', 'asc') === 'desc' ? 'desc' : 'asc');
+
+        $query = $this->dateFilter($this->periodQuery($this->year !== null))
             ->with('image')
-            ->when($this->year, fn ($q) => $q->whereYear('time_begin', $this->year))
             ->when($this->category, fn ($q) => $q->where('category', $this->category))
-            ->orderBy('time_begin', $this->property('sortOrder', 'asc') === 'desc' ? 'desc' : 'asc');
+            ->orderBy('time_begin', $direction);
 
         $perPage = (int) $this->property('perPage');
         if ($perPage > 0) {
-            $page = $this->property('queryFilters') ? max(1, (int) Request::query('page', 1)) : 1;
+            $page = $this->property('queryFilters') ? max(1, (int) Request::input('page', 1)) : 1;
 
             return $query->paginate($perPage, ['*'], 'page', $page)
-                ->appends(array_filter(['year' => $this->year, 'category' => $this->category]));
+                ->withPath(Request::url())
+                ->appends(array_filter(['year' => $this->year, 'month' => $this->month, 'category' => $this->category]));
         }
 
         $maxItems = (int) $this->property('maxItems');
@@ -249,6 +300,16 @@ class EventList extends ComponentBase
         }
 
         return $query->get();
+    }
+
+    /**
+     * AJAX: re-list with the posted year, month, category and page (queryFilters).
+     * Pair it with data-request-update to re-render the theme's list partial.
+     */
+    public function onFilter()
+    {
+        $this->prepareVars();
+        $this->events = $this->page['events'] = $this->loadEvents();
     }
 
     public function onFilterEvents()
