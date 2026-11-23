@@ -1,6 +1,18 @@
 columns:
+    image:
+        label: 'impulsetechnologies.campaignr::lang.fields.image'
+        type: image
+        width: 60
+        height: 60
+        sortable: false
+        searchable: false
     name:
         label: 'impulsetechnologies.campaignr::lang.fields.name'
+        type: text
+        searchable: true
+        sortable: true
+    category:
+        label: 'impulsetechnologies.campaignr::lang.fields.category'
         type: text
         searchable: true
         sortable: true
@@ -12,9 +24,17 @@ columns:
         label: 'impulsetechnologies.campaignr::lang.fields.ends_at'
         type: date
         sortable: true
+    all_day:
+        label: 'impulsetechnologies.campaignr::lang.fields.all_day'
+        type: switch
+        invisible: true
     repeat_event:
         label: 'impulsetechnologies.campaignr::lang.fields.should_repeat'
         type: switch
+    cost:
+        label: 'impulsetechnologies.campaignr::lang.fields.cost'
+        type: text
+        invisible: true
     location_city:
         label: 'impulsetechnologies.campaignr::lang.fields.location.city'
         type: text

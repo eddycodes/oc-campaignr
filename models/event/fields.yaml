@@ -27,6 +27,19 @@ secondaryTabs:
             required: 1
             type: datepicker
             tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
+        time_end:
+            label: 'impulsetechnologies.campaignr::lang.fields.ends_at'
+            mode: datetime
+            span: auto
+            required: 1
+            type: datepicker
+            tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
+        all_day:
+            label: 'impulsetechnologies.campaignr::lang.fields.all_day'
+            span: auto
+            type: switch
+            comment: 'impulsetechnologies.campaignr::lang.fields.all_day_comment'
+            tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
         repeat_event:
             label: 'impulsetechnologies.campaignr::lang.fields.repeat'
             span: auto
@@ -34,13 +47,6 @@ secondaryTabs:
             required: 0
             type: switch
             comment: 'impulsetechnologies.campaignr::lang.fields.repeat_comment'
-            tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
-        time_end:
-            label: 'impulsetechnologies.campaignr::lang.fields.ends_at'
-            mode: datetime
-            span: auto
-            required: 1
-            type: datepicker
             tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
         repeat_mode:
             label: 'impulsetechnologies.campaignr::lang.fields.repeat_mode'
@@ -67,6 +73,45 @@ secondaryTabs:
                 field: repeat_event
                 condition: checked
             type: datepicker
+            tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
+        category:
+            label: 'impulsetechnologies.campaignr::lang.fields.category'
+            type: dropdown
+            emptyOption: 'impulsetechnologies.campaignr::lang.fields.category_empty'
+            options:
+                'CPD': 'impulsetechnologies.campaignr::lang.fields.categories.cpd'
+                'Exams': 'impulsetechnologies.campaignr::lang.fields.categories.exams'
+                'Critical dates': 'impulsetechnologies.campaignr::lang.fields.categories.critical_dates'
+                'Public holiday': 'impulsetechnologies.campaignr::lang.fields.categories.public_holiday'
+            comment: 'impulsetechnologies.campaignr::lang.fields.category_comment'
+            span: auto
+            tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
+        cost:
+            label: 'impulsetechnologies.campaignr::lang.fields.cost'
+            span: auto
+            type: text
+            comment: 'impulsetechnologies.campaignr::lang.fields.cost_comment'
+            tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
+        website:
+            label: 'impulsetechnologies.campaignr::lang.fields.website'
+            span: auto
+            type: text
+            comment: 'impulsetechnologies.campaignr::lang.fields.website_comment'
+            tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
+        image:
+            label: 'impulsetechnologies.campaignr::lang.fields.image'
+            span: auto
+            type: fileupload
+            mode: image
+            imageWidth: 260
+            comment: 'impulsetechnologies.campaignr::lang.fields.image_comment'
+            tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
+        excerpt:
+            label: 'impulsetechnologies.campaignr::lang.fields.excerpt'
+            span: full
+            type: textarea
+            size: small
+            comment: 'impulsetechnologies.campaignr::lang.fields.excerpt_comment'
             tab: 'impulsetechnologies.campaignr::lang.fields.tab_details'
         description:
             size: ''
@@ -106,3 +151,17 @@ secondaryTabs:
             type: text
             commentAbove: 'impulsetechnologies.campaignr::lang.fields.location.misc_comment'
             tab: 'impulsetechnologies.campaignr::lang.fields.tab_location'
+        source_id:
+            label: 'impulsetechnologies.campaignr::lang.fields.source_id'
+            span: auto
+            readOnly: true
+            type: text
+            comment: 'impulsetechnologies.campaignr::lang.fields.source_id_comment'
+            tab: 'impulsetechnologies.campaignr::lang.fields.tab_source'
+        source_url:
+            label: 'impulsetechnologies.campaignr::lang.fields.source_url'
+            span: auto
+            readOnly: true
+            type: text
+            comment: 'impulsetechnologies.campaignr::lang.fields.source_url_comment'
+            tab: 'impulsetechnologies.campaignr::lang.fields.tab_source'

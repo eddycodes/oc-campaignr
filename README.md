@@ -124,6 +124,21 @@ The `events` themselves contain the following properties (single events are avai
 - `location_country` Country.
 - `location_misc` Miscellaneous information (e.g. "The door is on the back of the house").
 
+### Event fields
+
+The following fields can be configured on events:
+
+- `image`: Featured image attachment (`System\Models\File`, public). Shown on the events list and the event page. Recommended size: 1600 x 900 px (16:9), JPG, under 400 KB.
+- `excerpt`: Short summary (one or two sentences) shown on the events list. If left empty, the start of the description is used.
+- `category`: Category used to filter the events list (`CPD`, `Exams`, `Critical dates`, `Public holiday`).
+- `all_day`: Boolean switch to hide event times and show only the date.
+- `cost`: Pricing information (e.g., Free, K500, K350 members / K500 non-members).
+- `website`: Registration or information link, opened from the event page.
+- `source_id`: Original record identifier from the old website import (read-only in backend, not shown on the site).
+- `source_url`: Original page URL on the old website from the import (read-only in backend, not shown on the site).
+
+> **Note:** EventList and EventComponent markup can be overridden from the theme (`partials/<componentAlias>/default.htm`).
+
 ## License
 
 This plugin is licensed under the GNU GPL v3 license.

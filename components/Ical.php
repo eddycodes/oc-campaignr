@@ -60,18 +60,19 @@ class Ical extends \Cms\Classes\ComponentBase
           $evtEnd = Carbon::createFromFormat('Y-m-d H:i:s', $event->time_end)->format('Ymd\THis');
           $now = Carbon::now()->format('Ymd\THis');
 
-          // Then we need the location, description and title prepared for iCal.
-          $location = $event->location_street . ' ' .  $event->location_number .
-          ', ' . $event->location_zip . ' ' . $event->location_city . ' ' . $event->location_country;
+          // Location, description and title as iCal text values: plain text,
+          // with backslashes, commas, semicolons and newlines escaped (RFC 5545).
+          $location = $this->icalText(implode(', ', array_unique(array_filter([
+            $event->location_misc,
+            trim($event->location_street . ' ' . $event->location_number),
+            trim($event->location_zip . ' ' . $event->location_city),
+            $event->location_country,
+          ]))));
+          $description = $this->icalText(strip_tags(str_ireplace(['<br>', '<br/>', '<br />', '</p>'], "\n", (string) $event->description)));
+          $title = $this->icalText((string) $event->name);
 
-          // Further modifications
-          $location = trim($location);
-          $location = preg_replace('/([\,;])/','\\\$1', $location);
-          $description = html_entity_decode($event->description, ENT_COMPAT, 'UTF-8');
-          $title = html_entity_decode($event->name, ENT_COMPAT, 'UTF-8');
-
-          // Quick'n'Dirty unique hash
-          $uid = hash("md5", $now.$evtBegin.$evtEnd.$title.$description.$event->slug);
+          // Stable per event, so re-importing the file updates the entry instead of duplicating it.
+          $uid = hash('md5', $event->id . '-' . $event->slug) . '@' . parse_url(url('/'), PHP_URL_HOST);
 
           // Try to provide a correct URL to the event.
           $url = url('/');
@@ -107,13 +108,23 @@ class Ical extends \Cms\Classes\ComponentBase
 
           // Now build the event part
           $ics_content .= "BEGIN:VEVENT".$eol;
-          $ics_content .= 'DTSTART:'.$evtBegin.$eol;
-          $ics_content .= 'DTEND:'.$evtEnd.$eol;
-          $ics_content .= 'LOCATION:'.$location.$eol;
+          if ($event->all_day) {
+            // All-day events are dates; DTEND is the day after the last day.
+            $ics_content .= 'DTSTART;VALUE=DATE:'.Carbon::parse($event->time_begin)->format('Ymd').$eol;
+            $ics_content .= 'DTEND;VALUE=DATE:'.Carbon::parse($event->time_end)->addDay()->format('Ymd').$eol;
+          } else {
+            $ics_content .= 'DTSTART:'.$evtBegin.$eol;
+            $ics_content .= 'DTEND:'.$evtEnd.$eol;
+          }
+          if ($location !== '') {
+            $ics_content .= 'LOCATION:'.$location.$eol;
+          }
           $ics_content .= 'DTSTAMP:'.$now.$eol;
           $ics_content .= 'SUMMARY:'.$title.$eol;
           $ics_content .= 'URL;VALUE=URI:'.$url.$eol;
-          $ics_content .= 'DESCRIPTION:'.$description.$eol;
+          if ($description !== '') {
+            $ics_content .= 'DESCRIPTION:'.$description.$eol;
+          }
           $ics_content .= 'UID:'.$uid.$eol;
           $ics_content .= $repeat;
           $ics_content .= "END:VEVENT".$eol;
@@ -127,5 +138,19 @@ class Ical extends \Cms\Classes\ComponentBase
         ];
 
         return \Response::make($ics_content, 200, $headers);
+    }
+
+    /**
+     * An iCal TEXT value: entities decoded, whitespace tidied, and backslash,
+     * comma, semicolon and line breaks escaped so the line stays valid.
+     */
+    protected function icalText(string $text): string
+    {
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $text = preg_replace("/[ \t]+/", ' ', str_replace(["\r\n", "\r"], "\n", $text));
+        $text = trim(preg_replace("/\n{2,}/", "\n", $text));
+        $text = addcslashes($text, '\\,;');
+
+        return str_replace("\n", '\\n', $text);
     }
 }

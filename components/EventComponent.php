@@ -97,6 +97,12 @@ class EventComponent extends ComponentBase
                 'type'        => 'checkbox',
                 'default'     => true
             ],
+            'loadAssets' => [
+                'title'       => 'Load plugin styles and scripts',
+                'description' => 'Disable when the theme styles the event page',
+                'type'        => 'checkbox',
+                'default'     => true
+            ],
             'loadBootstrap' => [
                 'title'       => 'Load Bootstrap CSS',
                 'description' => 'Load Bootstrap 5 CSS (disable if already loaded in theme)',
@@ -148,11 +154,13 @@ class EventComponent extends ComponentBase
      */
     public function onRun()
     {
-        // Load CSS assets
-        $this->loadAssets();
+        if ($this->property('loadAssets', true)) {
+            // Load CSS assets
+            $this->loadAssets();
 
-        // Load registration assets
-        $this->loadRegistrationAssets();
+            // Load registration assets
+            $this->loadRegistrationAssets();
+        }
 
         // Prepare page variables
         $this->prepareVars();

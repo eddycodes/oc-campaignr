@@ -11,6 +11,7 @@ class Event extends Model
     use \Winter\Storm\Database\Traits\Validation;
     use \Winter\Storm\Database\Traits\SoftDelete;
     use \Winter\Storm\Database\Traits\Sluggable;
+    use \Winter\Storm\Database\Traits\Nullable;
 
     /**
      * @var array Generate slugs for these attributes.
@@ -48,7 +49,13 @@ class Event extends Model
       'location_zip',
       'location_city',
       'location_country',
-      'location_misc'
+      'location_misc',
+      'excerpt',
+      'category',
+      'cost',
+      'website',
+      'source_id',
+      'source_url'
     ];
 
     /**
@@ -78,7 +85,28 @@ class Event extends Model
         'location_zip',
         'location_city',
         'location_country',
-        'location_misc'
+        'location_misc',
+        'excerpt',
+        'category',
+        'cost',
+        'all_day',
+        'website',
+        'source_id',
+        'source_url'
+    ];
+
+    /**
+     * @var array Attribute casts.
+     */
+    protected $casts = [
+        'all_day' => 'boolean',
+    ];
+
+    /**
+     * @var array Featured image shown in listings and on the event page.
+     */
+    public $attachOne = [
+        'image' => [\System\Models\File::class, 'public' => true],
     ];
 
     /**

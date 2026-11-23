@@ -11,3 +11,6 @@
 1.0.4:
     - 'Added event registration feature with email notifications and export functionality.'
     - ./create_registrations_table.php
+1.0.5:
+    - 'Added summary, category, cost, all-day, website, image and import source fields to events.'
+    - add_listing_fields_to_events.php
